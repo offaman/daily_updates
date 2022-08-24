@@ -1,0 +1,1 @@
+console.log("My js script is loaded")
