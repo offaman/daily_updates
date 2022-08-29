@@ -1,8 +1,7 @@
-const sql = require("mssql");
-
+require('dotenv').config()
 const sqlConfig = {
-  user: "nodeJS",
-  password: "2214303378",
+  user: process.env.USER,
+  password: process.env.PASSWORD,
   database: "practice",
   server: "DESKTOP-IPSCV5H\\SPARTA",
   port: 51773,
@@ -15,7 +14,6 @@ const sqlConfig = {
     trustServerCertificate: true, 
   },
 };
-
 
 
 module.exports = sqlConfig;
