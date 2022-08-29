@@ -1,0 +1,9 @@
+1. Rename table or stored procedure
+	if table or stored procedure have false name it will log error in log file
+
+
+2. If username , password or server any of these is invalid 
+	it will store error in log
+
+3. After successful completion it also generate success message in log file
+
