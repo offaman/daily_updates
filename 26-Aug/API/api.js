@@ -30,7 +30,7 @@ router.route('/studentInfo/:id').get((request,response)=>{
         response.send(result)
         logger.info("Fetching successfull")
     }).catch((err) => {
-        logger.log('info',err)
+        logger.log('error',err)
     })
 })
 
@@ -39,7 +39,7 @@ router.route('/addStudentInfo').post((request,response)=>{
     let info = request.body
     dbOperation.insertStudent(info).then(result =>{
     }) .catch((err)=>{
-        logger.log('warn',err)
+        logger.log('error',err)
     })
 })
 
@@ -49,7 +49,7 @@ router.route('/delete/:id').post((request,response)=>{
         response.send(result)
         logger.info("Deletion successfull")
     }).catch((err)=>{
-        logger.log('info',err)
+        logger.log('error',err)
     })
 })
 

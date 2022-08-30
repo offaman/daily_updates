@@ -45,7 +45,7 @@ async function insertStudent(order){
         .input('section',mssql.NVarChar,order.Section)
         .execute(storedProcForUpdation);
     }catch(error){
-        logger.log('info',error)
+        logger.log('error',error)
     }
 }
 
@@ -58,7 +58,7 @@ async function deleteStudent(studentId){
         .query(`delete from ${tableforOperations} where StudentId = @StudentId`)
     }
     catch(err){
-        logger.log('info',err)
+        logger.log('error',err)
     }
 }
 
@@ -75,7 +75,7 @@ async function updateStudentInfo(studentIdwithInfo){
         .query(`update ${tableforOperations} set StudentName = @name ,GPA = @GPA ,Branch = @Branch , Section = @section where StudentId = @Id` )
     }
     catch(err){
-        logger.log('info',err)
+        logger.log('error',err)
     }
 }
 
