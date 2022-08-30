@@ -3,8 +3,8 @@ const mssql = require('mssql');
 // rename tablefoOperation or storedProcForUpdation as error raise it will be stored in log file
 const tableforOperations = 'StudentDetails'
 //const tableforOperations = 'StudentDetai'
-//const storedProcForUpdation = 'insertIntoStudentDetails'
-const storedProcForUpdation = 'IntoStudentDetails'
+const storedProcForUpdation = 'insertIntoStudentDetails'
+//const storedProcForUpdation = 'IntoStudentDetails'
 const logger = require("./logger");
 
 
@@ -78,10 +78,6 @@ async function updateStudentInfo(studentIdwithInfo){
         logger.log('error',err)
     }
 }
-
-
-
-
 
 
 
