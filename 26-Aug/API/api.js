@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 app.use('/api',router);
 
 
-router.route('/studentInfo').get((request,response)=>{
-    dbOperation.getStudentInfo().then(result =>{
+router.route('/studentInfo').get(async(request,response)=>{
+    await dbOperation.getStudentInfo().then(result =>{
         response.send(result)
     }).catch((err)=>{
         logger.log('error',err)
@@ -22,7 +22,6 @@ router.route('/studentInfo').get((request,response)=>{
 })
 
 
-console.log(studentInfo)
 router.route('/studentInfo/:id').get((request,response)=>{
     dbOperation.getStudentInfoById(request.params.id).then(result =>{
         response.send(result)
@@ -34,14 +33,17 @@ router.route('/studentInfo/:id').get((request,response)=>{
 
 router.route('/addStudentInfo').post((request,response)=>{
         let info = request.body
+        console.log(info)
         try{
-            validate(info)
+            validate.validate(info)
             const infoToAdd = new studentInfo(info)
             dbOperation.insertStudent(infoToAdd).then(result =>{
+                response.send(result)
             }).catch((err)=>{
                 logger.log('error',err)
             })
     } catch(error){
+        console.log(error)
         logger.log('error',error)
     }
 })
@@ -59,7 +61,7 @@ router.route('/delete/:id').post((request,response)=>{
 router.route('/update/:id').post((request,response)=>{
     let info = request.body
     try{
-            validate(info)//validation
+            validate.validate(info)//validation
             const infoToUpdate = new studentInfo(info)//model studentInfo
             dbOperation.updateStudentInfo(infoToUpdate).then(result =>{
                 response.send(result)
@@ -76,6 +78,3 @@ router.route('/update/:id').post((request,response)=>{
 var port = 8000;
 app.listen(port)
 console.log('API is running at '+port)
-
-
-
